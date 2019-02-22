@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title> Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="nav navbar-nav ml-auto  mt-lg-0 text-center">
+            <li class="nav-item mr-5">
+                <a class="nav-link active" href="/admin">start</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/nieaktywne">nieaktywne</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/aktywne">aktywne</a>
+            </li>
+            <li class="nav-item  ml-5">
+                <a class="nav-link" href="/logout"><i class="fa fa-sign-out"></i>  wyloguj</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid content" style="min-height: 93vh">
+    <header style="margin-top: 0;"><h2 class="text-center" style="padding-top: 50px;">Witaj w panelu administratora <b><%=username%></b></h2></header>
+    <div class="container">
+        <div class="row">
+            <div class="card col-md-4">
+                <div class="card-header admin-card-header"><h5>Liczba przepisów zaakceptowanych</h5></div>
+                <div class="card-body admin-card-body"><%=przepisy1[0].ilosc%></div>
+            </div>
+            <div class="card col-md-4">
+                <div class="card-header admin-card-header"><h5>Liczba przepisów oczekujacych</div>
+                <div class="card-body admin-card-body"><%=przepisy2[0].ilosc%></div>
+            </div>
+            <div class="card col-md-4">
+                <div class="card-header admin-card-header"><h5>Liczba komentarzy</h5></div>
+                <div class="card-body admin-card-body"><%=przepisy3[0].ilosc%></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card col-md-12">
+                <div class="card-header admin-card-header"><h5>Ilosc przepisow w kategoriach</h5></div>
+                <div class="card-body"> <canvas style="height:100vh; width:100vw" id="myChart"></canvas></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js" ></script>
+<script src="/javascripts/main.js"></script>
+</body>
+</html>

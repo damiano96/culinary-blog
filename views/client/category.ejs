@@ -1,0 +1,43 @@
+<% include include/header.ejs %>
+  <div class="container-fluid content">
+    <div class="banner">
+      <img src="<%=kategoria[0].baner_src%>" alt="">
+      <div class="bannerBox">
+        <h1><%=title%></h1>
+      </div>
+    </div>
+    <div class="container" style="min-height: 40vh">
+      <section class="przepisy_home">
+
+        <% if (dane.length > 0) { %>
+        <div class="row" style="margin-top: 100px;">
+          <% for(var object of dane) {%>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="text-right"><%=object.nazwa_przepis %></h6>
+                <p class="h6_label text-right">Śniadania</p>
+              </div>
+              <div class="card-body item">
+              <img src="/<%=object.sciezka_zdjecie %>" alt="">
+                <div class="overlay">
+                  <div class="text">
+                    <a href="/kategoria/<%=kategoria[0].nazwa_kategorii %>/<%=object.nazwa_przepis.split(' ').join('_') %>" class="btn btn-category">Kliknij, aby zobaczyć</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }%>
+        </div>
+        <% } else { %>
+          <header><h2 class="text-center" style="margin-top:100px">Brak przepisów w tej kategorii</h2></header>
+        <% } %>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

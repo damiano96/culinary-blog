@@ -1,0 +1,68 @@
+<% include include/header.ejs %>
+<div class="container-fluid content" >
+    <div class="banner">
+        <img src="<%=kategoria[0].baner_src%>" alt="">
+        <div class="bannerBox">
+            <h2><%=title%></h2>
+            <h4><%=dane[0].nazwa_przepis%></h4>
+        </div>
+    </div>
+    <div class="container" style="min-height: 40vh">
+        <div class="card">
+            <div class="card-header">
+                <h4><%=dane[0].nazwa_przepis%></h4>
+            </div>
+            <div class="card-body">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-md-7"><img src="/<%=dane[0].sciezka_zdjecie%>" alt="" ></div>
+                    <div class="col-md-5">
+                        <h6>Skladniki:</h6>
+                        <ul>
+                            <% for (var object of dane) { %>
+                            <li><%=object.nazwa_skladnika%> - <%=object.ilosc%> g</li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="margin-top: 40px">
+                        <p><%-dane[0].opis_przepis%></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header"><h5>Komentarze: </h5></div>
+            <div class="card-body comments">
+                <%for(var kom of komentarze) { %>
+                    <h6><%= kom.uzytkownik%></h6>
+                    <p><%= kom.komentarz%></p>
+                    <hr>
+
+                <% } %>
+                <form class="form-horizontal" id="myForm"  method="post">
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <input type="text" class="form-control" id="uzytkownik" name="uzytkownik" placeholder="Nick" required>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="submit" class="btn btn-success" value="Wyslij">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            <textarea class="form-control" rows="5" id="comment" name="komentarz" placeholder="Komentarz" required></textarea>
+                        </div>
+                    </div>
+                    <input type="hidden" id="idPrzepis" name="idPrzepis" value="<%=dane[0].id_przepis%>">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+</html>

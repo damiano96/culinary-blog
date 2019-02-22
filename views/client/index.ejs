@@ -1,0 +1,63 @@
+<% include include/header.ejs %>
+  <div class="container-fluid content" >
+    <div class="banner">
+      <img src="/images/img/banner_home.png" alt="">
+      <div class="bannerBox">
+        <h1>przepisik</h1>
+      </div>
+    </div>
+    <div class="container">
+      <section class="przepisy_home">
+        <header>
+          <h2 class="text-center">Najnowsze przepisy</h2>
+        </header>
+        <div class="row">
+          <% for(var object of dane) {%>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="text-right"><%=object.nazwa_przepis %></h6>
+                <p class="h6_label text-right"><%=object.nazwa_kategorii %></p>
+              </div>
+              <div class="card-body"><img src="<%=object.sciezka_zdjecie %>" alt="" class="img-fluid"></div>
+              <div class="card-footer">
+                <p class="text-right h6_label"><%=object.krotki_opis %></p>
+
+                <p class="text-right"> <a href="kategoria/<%=object.nazwa_kategorii %>/<%=object.nazwa_przepis.split(" ").join("_") %>" style="color: #1c8f4d; font-size: 14px;">Kliknij, aby zobaczyć..</a></p>
+              </div>
+            </div>
+          </div>
+            <% }%>
+        </div>
+      </section>
+      <section class="przepisy_home">
+        <header>
+          <h2 class="text-center">Najpopularniejsze przepisy</h2>
+        </header>
+        <div class="row">
+          <% for(var object of dane2) {%>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header">
+                  <h6 class="text-right"><%=object.nazwa_przepis %></h6>
+                  <p class="h6_label text-right"><%=object.nazwa_kategorii %></p>
+                </div>
+                <div class="card-body"><img src="<%=object.sciezka_zdjecie %>" alt="" class="img-fluid"></div>
+                <div class="card-footer">
+                  <p class="text-right h6_label"><%=object.krotki_opis %><br>
+                  Liczba komentarzy: <b><%=object.liczba_komentarzy %></b>
+                  </p>
+                  <p class="text-right"> <a href="kategoria/<%=object.nazwa_kategorii %>/<%=object.nazwa_przepis.split(" ").join("_") %>" style="color: #1c8f4d; font-size: 14px;">Kliknij, aby zobaczyć..</a></p>
+                </div>
+              </div>
+            </div>
+          <% }%>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

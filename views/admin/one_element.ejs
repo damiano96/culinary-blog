@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title> Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="nav navbar-nav ml-auto  mt-lg-0 text-center">
+            <li class="nav-item mr-5">
+                <a class="nav-link" href="/admin">start</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/nieaktywne">nieaktywne</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/aktywne">aktywne</a>
+            </li>
+            <li class="nav-item  ml-5">
+                <a class="nav-link" href="/logout"><i class="fa fa-sign-out"></i>  wyloguj</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid content" style="min-height: 93vh">
+    <header style="margin-top: 0;"><h2 class="text-center" style="padding-top: 50px;">Zobacz przepis:</h2></header>
+    <div class="container" style="min-height: 40vh">
+        <form action="" method="post">
+        <div class="card">
+            <div class="card-header">
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <input type="text" value="<%=dane[0].nazwa_przepis%>" name="nazwa_przepis" class="form-control-plaintext form-control-lg">
+                    </div>
+                    <div class="col-sm-2">
+                            <button type="submit" name="action" value="update" class="btn btn-success">akceptuj</button>
+                    </div>
+                    <div class="col-sm-2">
+
+                            <button type="submit" name="action" value="delete" class="btn btn-danger">usun</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-md-7"><img src="../../<%=dane[0].sciezka_zdjecie%>" alt="" ></div>
+                    <div class="col-md-5">
+                            <h6>Skladniki:</h6>
+                            <ul>
+                                <% for (var object of dane) { %>
+                                <li><%=object.nazwa_skladnika%> - <%=object.ilosc%> g</li>
+                                <% } %>
+                            </ul>
+                            <h6>Kategoria:</h6>  <%=object.nazwa_kategorii%>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="margin-top: 40px">
+                        <label for="krotki_opis"><h6>Krotki opis:</h6></label>
+                        <textarea class="form-control form-control-plaintext" rows="1" id="opis_krotki" name="opis_krotki" maxlength="45" required><%=dane[0].krotki_opis%></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="margin-top: 40px">
+                        <label for="opis_przepis"><h6>Instrukcja:</h6></label>
+                        <textarea class="form-control form-control-plaintext" rows="12" id="instrukcja" name="instrukcja" required><%=dane[0].opis_przepis%></textarea>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </form>
+        </div>
+
+    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+</html>
